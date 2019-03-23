@@ -1,0 +1,6 @@
+mysql_version: mysql-5.7.23
+boosh_version: boost_1_59_0
+source_dir: /tmp
+install_dir: /data/mysql
+data_dir: /data/mysql/data
+

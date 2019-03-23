@@ -1,0 +1,7 @@
+- name: copy need file
+  copy: src={{ item }} dest={{ source_dir }}
+  with_fileglob:
+    - ../files/*
+
+- name: copy mysql conf file ##分发MySQL配置文件
+  template: src=my.cnf.m2  dest=/etc/my.cnf

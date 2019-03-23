@@ -1,0 +1,3 @@
+- hosts: 172.16.163.21
+  roles: 
+    - mysql_install

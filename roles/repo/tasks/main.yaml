@@ -1,0 +1,27 @@
+
+
+##创建ntp源
+
+- name: Clean ntp
+  shell: rm -rf /var/ftp/pub/libfuse-amd64 && mkdir -p /var/ftp/pub
+
+- name: prepare ntp-amd64 rpm file
+  unarchive: src=ntp-amd64.tar.gz dest=/var/ftp/pub
+
+- name: install createrepo
+  shell: yum install -y createrepo
+  notify: Createrepo of ntp-amd64
+
+- name: curl package dir
+  shell: mkdir -p /tmp/curl
+  tags: curl
+
+- name: prepare curl package
+  unarchive: src=curl-arm64.tar.gz  dest=/tmp/curl
+  tags: curl
+
+- name: install curl
+  shell: rpm -iv /tmp/curl/*
+  tags: curl
+
+

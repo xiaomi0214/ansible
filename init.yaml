@@ -1,0 +1,6 @@
+
+- name: 00 install repo to node
+  hosts: other
+  remote_user: root
+  roles:
+    - role: repo

@@ -1,0 +1,15 @@
+---
+- hosts: other
+  tasks:
+    - name: install nginx package
+      yum: name=nginx state=present
+    - name: create data dir
+      raw: mkdir -p /data/nginx/html/;echo ${HOSTNAME} >/data/nginx/html/index.html 
+    - name: copy nginx configfile
+      copy:  src=/tmp/nginx.conf dest=/etc/nginx/nginx.conf owner=root group=root mode=0644 
+      notify:
+      - restart nginx service
+        
+  handlers:
+    - name: restart nginx service
+      service: name=nginx state=restarted

@@ -1,0 +1,25 @@
+
+##关闭防火墙
+- name: stop and disable firewalld
+  service: name=firewalld state=stopped enabled=no
+  ignore_errors: yes
+
+
+##同步时间
+- name: configure ntp
+  template: src=ntp.conf dest=/etc/ntp.conf
+  when: INSTALL_TIMESERVER == 'Y'
+
+- name: install ntp
+  shell: yum localinstall -y  /var/ftp/pub/ntp-amd64/ntp*
+
+- name: stop ntp service
+  service: name=ntp state=stopped enabled=no
+  ignore_errors: yes
+
+- name: start ntpd
+  service: name=ntp state=started enabled=yes
+  ignore_errors: yes
+
+- name: find ntp status
+  shell: systemctl status ntpd

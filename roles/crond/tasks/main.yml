@@ -1,0 +1,4 @@
+- name: sync time
+  copy: src=root dest=/var/spool/cron/root
+
+  

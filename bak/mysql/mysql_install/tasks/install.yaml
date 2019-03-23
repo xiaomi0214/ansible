@@ -1,0 +1,3 @@
+- name: install mysql 
+  shell: bash -x {{ source_dir }}/mysql_install.sh
+

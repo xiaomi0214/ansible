@@ -1,0 +1,2 @@
+- name: Createrepo of ntp-amd64
+  shell: createrepo -v /var/ftp/pub/ntp-amd64
